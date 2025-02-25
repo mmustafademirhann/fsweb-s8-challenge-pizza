@@ -145,3 +145,32 @@ export const Button = styled.button`
     background-color: #fae000;
   }
 `;
+export const RadioGroup = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+`;
+
+export const RadioLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #292929;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  justify-content: center;
+
+  &:hover {
+    background: #fdc913;
+  }
+
+  input {
+    transform: scale(1.2);
+  }
+`;

@@ -8,9 +8,9 @@ const Home = () => {
       <Hero>
         <Logo src={logo} alt="Teknolojik Yemekler Logo" />
         <h1>
-  Kod Acıktırır <br />
-  Pizza Doyurur
-</h1>
+          Kod Acıktırır <br />
+          Pizza,Doyurur
+        </h1>
 
         <Link to="/order">
           <Button>SİPARİŞ VER</Button>
@@ -19,5 +19,5 @@ const Home = () => {
     </HomeContainer>
   );
 };
-
+""
 export default Home;
