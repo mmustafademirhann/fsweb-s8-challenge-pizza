@@ -16,7 +16,8 @@ import {
     SummaryBox,
     Button,
     RadioGroup,
-    RadioLabel
+    RadioLabel,
+    ErrorText
 } from "../styles/OrderStyles";
 import logo from "../assets/logo.svg";
 
@@ -57,16 +58,28 @@ const OrderPizza = ({ setOrderData }) => {
         }));
     };
 
+    const validationRules = [
+        { condition: formData.name.length < 3, key: "name", message: "İsim en az 3 karakter olmalı." },
+        { condition: !formData.size, key: "size", message: "Lütfen bir boyut seçin." },
+        { condition: !formData.dough, key: "dough", message: "Lütfen hamur kalınlığını seçin." },
+        { condition: formData.toppings.length < 4 || formData.toppings.length > 10, key: "toppings", message: "En az 4, en fazla 10 malzeme seçmelisiniz." }
+    ];
+
     const validateForm = () => {
-        let newErrors = {};
-        if (formData.name.length < 3) newErrors.name = "İsim en az 3 karakter olmalı.";
-        if (!formData.size) newErrors.size = "Lütfen bir boyut seçin.";
-        if (!formData.dough) newErrors.dough = "Lütfen hamur kalınlığını seçin.";
-        if (formData.toppings.length < 4 || formData.toppings.length > 10)
-            newErrors.toppings = "En az 4, en fazla 10 malzeme seçmelisiniz.";
+        let hasError = false; // Hata olup olmadığını takip etmek için
+    
+        const newErrors = validationRules.reduce((errors, rule) => {
+            if (rule.condition) {
+                errors[rule.key] = rule.message;
+                hasError = true; // Eğer bir hata varsa, bunu true yap
+            }
+            return errors;
+        }, {});
+    
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+        return !hasError; // Eğer hata varsa false, yoksa true döndür
     };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,7 +111,8 @@ const OrderPizza = ({ setOrderData }) => {
                 <Form onSubmit={handleSubmit}>
                     <Label>İsim *</Label>
                     <Input type="text" name="name" value={formData.name} onChange={handleChange} />
-                    {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+                    {errors.name && <ErrorText>{errors.name}</ErrorText>} {/* Yeni Stil */}
+
 
                     <Label>Boyut Seç *</Label>
                     <RadioGroup>
@@ -115,7 +129,7 @@ const OrderPizza = ({ setOrderData }) => {
                             </RadioLabel>
                         ))}
                     </RadioGroup>
-                    {errors.size && <p style={{ color: "red" }}>{errors.size}</p>}
+                    {errors.size && <ErrorText>{errors.size}</ErrorText>} {/* Yeni Stil */}
 
                     <Label>Hamur Seç *</Label>
                     <Select name="dough" value={formData.dough} onChange={handleChange}>
@@ -124,7 +138,8 @@ const OrderPizza = ({ setOrderData }) => {
                         <option value="Orta">Orta</option>
                         <option value="Kalın">Kalın</option>
                     </Select>
-                    {errors.dough && <p style={{ color: "red" }}>{errors.dough}</p>}
+                    {errors.dough && <ErrorText>{errors.dough}</ErrorText>} {/* Yeni Stil */}
+
 
                     <Label>Ek Malzemeler (En az 4, Maks. 10)</Label>
                     <CheckboxGroup>
@@ -142,8 +157,7 @@ const OrderPizza = ({ setOrderData }) => {
                             </CheckboxLabel>
                         ))}
                     </CheckboxGroup>
-                    {errors.toppings && <p style={{ color: "red" }}>{errors.toppings}</p>}
-
+                    {errors.toppings && <ErrorText>{errors.toppings}</ErrorText>} {/* Yeni Stil */}
 
                     <Label>Adet</Label>
                     <QuantityBox>

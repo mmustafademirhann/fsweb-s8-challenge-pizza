@@ -18,6 +18,7 @@ export const HomeContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 0 20px; /* Mobilde içerik yana yapışmasın */
 `;
 
 export const Hero = styled.div`
@@ -32,19 +33,31 @@ export const Hero = styled.div`
   width: 100%;
   text-align: center;
   z-index: 2;
+  padding: 0 2rem;
 
-   h1 {
-    font-size: 5rem; /* Font büyütüldü */
-    font-weight: 50; /* ExtraBold olarak ayarlandı */
+  h1 {
+    font-size: 5rem;
+    font-weight: 50;
     text-transform: uppercase;
-    font-family: "Barlow", sans-serif; /* Font değiştirildi */
+    font-family: "Barlow", sans-serif;
     margin-bottom: 1rem;
-    line-height: 1.2; /* Satır aralığı ayarlandı */
+    line-height: 1.2;
     max-width: 90%;
     white-space: pre-line;
-    letter-spacing: 2px; /* Harf aralıklarını artırarak daha net görünmesini sağladık */
-  }
+    letter-spacing: 2px;
 
+    @media (max-width: 1024px) {
+      font-size: 4rem; /* Tabletlerde küçült */
+    }
+
+    @media (max-width: 768px) {
+      font-size: 3rem; /* Küçük ekranlar için küçült */
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2.5rem; /* Mobil için en uygun boyut */
+    }
+  }
 `;
 
 export const Logo = styled.img`
@@ -55,6 +68,14 @@ export const Logo = styled.img`
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
+
+  @media (max-width: 768px) {
+    width: 150px; /* Küçük ekranlarda logo biraz küçülsün */
+  }
+
+  @media (max-width: 480px) {
+    width: 120px; /* Mobilde daha da küçük */
+  }
 `;
 
 export const Button = styled.button`
@@ -71,5 +92,16 @@ export const Button = styled.button`
 
   &:hover {
     background-color: #fae000;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.8rem; /* Küçük ekranlar için biraz küçült */
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 1.5rem;
   }
 `;
