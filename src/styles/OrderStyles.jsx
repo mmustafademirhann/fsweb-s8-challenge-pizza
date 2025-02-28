@@ -23,18 +23,18 @@ export const Logo = styled.img`
 `;
 export const ContentWrapper = styled.div`
   width: 50%;
-  max-width: 700px; /* En fazla 700px genişlik */
-  min-width: 500px; /* Minimum 500px genişlik, böylece erken daralmaz */
+  max-width: 700px; 
+  min-width: 500px;
   background: white;
   padding: 3rem;
   border-radius: 8px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
-  margin-top: -40px;
+  margin-top: 0px;
   flex-shrink: 0; /* Daralmayı önlemek için */
 
 
   @media (max-width: 480px) {
-    width: calc(100% - 20px); /* 480px altına inince kenarlardan 10px boşluk bırak */
+    width: calc(100% - 20px); 
     padding: 1.5rem;
   }
 `;
@@ -121,7 +121,7 @@ export const Button = styled.button`
 `;
 export const RadioGroup = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Dinamik kolon yapısı */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
   gap: 10px;
   width: 100%;
   justify-items: center;
@@ -130,20 +130,20 @@ export const RadioGroup = styled.div`
 
 
 export const ErrorText = styled.p`
-  background-color: rgba(255, 0, 0, 0.1); /* Hafif kırmızı arka plan */
-  color: #d32f2f; /* Daha koyu kırmızı */
+  background-color: rgba(255, 0, 0, 0.1); 
+  color: #d32f2f;
   font-size: 14px;
   font-weight: 600;
   padding: 8px 12px;
   margin-top: 5px;
-  border-left: 4px solid #d32f2f; /* Sol kenara kırmızı çizgi */
-  border-radius: 5px; /* Hafif yuvarlatılmış köşeler */
+  border-left: 4px solid #d32f2f;
+  border-radius: 5px; 
   display: flex;
   align-items: center;
-  gap: 8px; /* İkon ile yazı arasındaki mesafe */
+  gap: 8px; 
   
   &::before {
-    content: "⚠️"; /* Emoji veya SVG ekleyebilirsin */
+    content: "⚠️";
     font-size: 16px;
   }
 `;
@@ -151,13 +151,13 @@ export const ErrorText = styled.p`
 
 export const Input = styled.input`
   padding: 0.8rem;
-  border: 1px solid #ccc; /* Daha soft gri */
+  border: 1px solid #ccc; 
   border-radius: 5px;
   width: 100%;
   transition: border-color 0.3s ease;
 
   &:focus {
-    border-color: #888; /* Seçildiğinde hafif koyulaşsın */
+    border-color: #888; 
     outline: none;
   }
 `;
@@ -183,7 +183,7 @@ export const CheckboxLabel = styled.label`
   background-color: white;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #ddd; /* Daha açık ve soft gri */
+  border: 1px solid #ddd; 
   cursor: pointer;
   transition: border 0.3s ease, background 0.3s ease;
   width: 100%;
@@ -191,8 +191,8 @@ export const CheckboxLabel = styled.label`
   text-align: left;
 
   &:hover {
-    background:rgb(255, 200, 0); /* Daha yumuşak sarı tonu */
-    border-color: #bbb; /* Hafif koyulaşma */
+    background:rgb(255, 200, 0); 
+    border-color: #bbb;
   }
 
   input {
@@ -209,7 +209,7 @@ export const RadioLabel = styled.label`
   background-color: white;
   padding: 10px 15px;
   border-radius: 8px;
-  border: 1px solid #ccc; /* Daha soft görünüm */
+  border: 1px solid #ccc; 
   cursor: pointer;
   transition: border 0.3s ease, background 0.3s ease;
 

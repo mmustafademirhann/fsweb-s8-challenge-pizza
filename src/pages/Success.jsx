@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { SuccessContainer, SummaryBox, Button } from "../styles/SuccessStyles";
+import { SuccessContainer, SummaryBox, Button, Header, SubHeader, HighlightText } from "../styles/SuccessStyles";
 
 const Success = ({ orderData }) => {
   const history = useHistory();
@@ -16,9 +16,9 @@ const Success = ({ orderData }) => {
 
   return (
     <SuccessContainer>
-      <h1>Lezzetin Yolda!</h1>
-      <h2>SİPARİŞ ALINDI</h2>
-      <p><strong>{orderData.name}</strong> için sipariş oluşturuldu.</p>
+      <Header>Teknolojik Yemekler</Header>
+      <HighlightText>Lezzetin Yolda</HighlightText>
+      <SubHeader>SİPARİŞ ALINDI</SubHeader>
 
       <SummaryBox>
         <p><strong>Boyut:</strong> {orderData.size}</p>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { FooterComponent } from "./FooterComponent";
 import {
     OrderContainer,
     Header,
@@ -67,7 +68,7 @@ const OrderPizza = ({ setOrderData }) => {
 
     const validateForm = () => {
         let hasError = false; // Hata olup olmadığını takip etmek için
-    
+
         const newErrors = validationRules.reduce((errors, rule) => {
             if (rule.condition) {
                 errors[rule.key] = rule.message;
@@ -75,11 +76,11 @@ const OrderPizza = ({ setOrderData }) => {
             }
             return errors;
         }, {});
-    
+
         setErrors(newErrors);
         return !hasError; // Eğer hata varsa false, yoksa true döndür
     };
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -99,81 +100,95 @@ const OrderPizza = ({ setOrderData }) => {
     };
 
     return (
-        <OrderContainer>
-            <Header>
-                <Logo src={logo} alt="Teknolojik Yemekler" />
-            </Header>
-
-            <ContentWrapper>
-                <h2>Position Absolute Acı Pizza</h2>
-                <p><strong>85.50₺</strong></p>
-
-                <Form onSubmit={handleSubmit}>
-                    <Label>İsim *</Label>
-                    <Input type="text" name="name" value={formData.name} onChange={handleChange} />
-                    {errors.name && <ErrorText>{errors.name}</ErrorText>} {/* Yeni Stil */}
-
-
-                    <Label>Boyut Seç *</Label>
-                    <RadioGroup>
-                        {["Küçük", "Orta", "Büyük"].map((size) => (
-                            <RadioLabel key={size}>
-                                <Input
-                                    type="radio"
-                                    name="size"
-                                    value={size}
-                                    checked={formData.size === size}
-                                    onChange={handleChange}
-                                />
-                                {size}
-                            </RadioLabel>
-                        ))}
-                    </RadioGroup>
-                    {errors.size && <ErrorText>{errors.size}</ErrorText>} {/* Yeni Stil */}
-
-                    <Label>Hamur Seç *</Label>
-                    <Select name="dough" value={formData.dough} onChange={handleChange}>
-                        <option value="">Hamur Kalınlığı</option>
-                        <option value="İnce">İnce</option>
-                        <option value="Orta">Orta</option>
-                        <option value="Kalın">Kalın</option>
-                    </Select>
-                    {errors.dough && <ErrorText>{errors.dough}</ErrorText>} {/* Yeni Stil */}
+        <>
+            <OrderContainer>
+                <Header>
+                    <Logo src={logo} alt="Teknolojik Yemekler" />
+                </Header>
+                <img
+                    src="/images/iteration-2-images/pictures/form-banner.png"
+                    alt="Form Banner"
+                    style={{
+                        width: "600px",
+                        height: "200px", // Resmin görünmesini istediğin yükseklik
+                        objectFit: "cover", // Resmi kırparak uygun hale getirir
+                        objectPosition: "bottom" // Alt kısmı sabit bırakır, üstü keser
+                    }}
+                />
 
 
-                    <Label>Ek Malzemeler (En az 4, Maks. 10)</Label>
-                    <CheckboxGroup>
-                        {toppingsList.map((topping) => (
-                            <CheckboxLabel key={topping}>
-                                <div className="checkbox-wrapper">
+                <ContentWrapper>
+                    <h2>Position Absolute Acı Pizza</h2>
+                    <p><strong>85.50₺</strong></p>
+
+                    <Form onSubmit={handleSubmit}>
+                        <Label>İsim *</Label>
+                        <Input type="text" name="name" value={formData.name} onChange={handleChange} />
+                        {errors.name && <ErrorText>{errors.name}</ErrorText>} {/* Yeni Stil */}
+
+
+                        <Label>Boyut Seç *</Label>
+                        <RadioGroup>
+                            {["Küçük", "Orta", "Büyük"].map((size) => (
+                                <RadioLabel key={size}>
                                     <Input
-                                        type="checkbox"
-                                        value={topping}
-                                        checked={formData.toppings.includes(topping)}
-                                        onChange={() => handleToppingsChange(topping)}
+                                        type="radio"
+                                        name="size"
+                                        value={size}
+                                        checked={formData.size === size}
+                                        onChange={handleChange}
                                     />
-                                </div>
-                                <span>{topping}</span>
-                            </CheckboxLabel>
-                        ))}
-                    </CheckboxGroup>
-                    {errors.toppings && <ErrorText>{errors.toppings}</ErrorText>} {/* Yeni Stil */}
+                                    {size}
+                                </RadioLabel>
+                            ))}
+                        </RadioGroup>
+                        {errors.size && <ErrorText>{errors.size}</ErrorText>} {/* Yeni Stil */}
 
-                    <Label>Adet</Label>
-                    <QuantityBox>
-                        <button type="button" onClick={() => handleQuantityChange("decrease")}>-</button>
-                        <span>{formData.quantity}</span>
-                        <button type="button" onClick={() => handleQuantityChange("increase")}>+</button>
-                    </QuantityBox>
+                        <Label>Hamur Seç *</Label>
+                        <Select name="dough" value={formData.dough} onChange={handleChange}>
+                            <option value="">Hamur Kalınlığı</option>
+                            <option value="İnce">İnce</option>
+                            <option value="Orta">Orta</option>
+                            <option value="Kalın">Kalın</option>
+                        </Select>
+                        {errors.dough && <ErrorText>{errors.dough}</ErrorText>} {/* Yeni Stil */}
 
-                    <SummaryBox>
-                        <p><strong>Toplam:</strong> {(formData.price + formData.toppings.length * 5) * formData.quantity}₺</p>
-                    </SummaryBox>
 
-                    <Button type="submit" disabled={loading}>{loading ? "Sipariş Veriliyor..." : "Siparişi Ver"}</Button>
-                </Form>
-            </ContentWrapper>
-        </OrderContainer>
+                        <Label>Ek Malzemeler (En az 4, Maks. 10)</Label>
+                        <CheckboxGroup>
+                            {toppingsList.map((topping) => (
+                                <CheckboxLabel key={topping}>
+                                    <div className="checkbox-wrapper">
+                                        <Input
+                                            type="checkbox"
+                                            value={topping}
+                                            checked={formData.toppings.includes(topping)}
+                                            onChange={() => handleToppingsChange(topping)}
+                                        />
+                                    </div>
+                                    <span>{topping}</span>
+                                </CheckboxLabel>
+                            ))}
+                        </CheckboxGroup>
+                        {errors.toppings && <ErrorText>{errors.toppings}</ErrorText>} {/* Yeni Stil */}
+
+                        <Label>Adet</Label>
+                        <QuantityBox>
+                            <button type="button" onClick={() => handleQuantityChange("decrease")}>-</button>
+                            <span>{formData.quantity}</span>
+                            <button type="button" onClick={() => handleQuantityChange("increase")}>+</button>
+                        </QuantityBox>
+
+                        <SummaryBox>
+                            <p><strong>Toplam:</strong> {(formData.price + formData.toppings.length * 5) * formData.quantity}₺</p>
+                        </SummaryBox>
+
+                        <Button type="submit" disabled={loading}>{loading ? "Sipariş Veriliyor..." : "Siparişi Ver"}</Button>
+                    </Form>
+                </ContentWrapper>
+            </OrderContainer>
+            <FooterComponent />
+        </>
     );
 };
 
