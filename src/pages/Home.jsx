@@ -34,16 +34,14 @@ const Home = () => {
             </button>
           ))}
         </IconButtonGroup>
-      {/* 🔥 KAMPANYA KARTLARI (Content'in DIŞINA ÇIKARDIM) */}
+      
       <PromoSection>
-        {/* Soldaki Büyük Kart */}
+       
         <div className="promo-large" style={{ backgroundImage: "url('images/iteration-2-images/cta/kart-1.png')" }}>
           <h2>Özel Lezzetus</h2>
           <p>Position Absolute Acı Burger</p>
           <button>SİPARİŞ VER</button>
         </div>
-
-        {/* Sağdaki İki Küçük Kart */}
         <div className="promo-wrapper">
           <div className="promo-dark" style={{ backgroundImage: "url('images/iteration-2-images/cta/kart-2.png')" }}>
             <h2>Hackathlon Burger Menüsü</h2>
@@ -57,12 +55,12 @@ const Home = () => {
       </PromoSection>
       
 
-      {/* 🏆 ORTA BÖLÜM */}
+      
       <Content>
         <h2>En Çok Paketlenen Menüler</h2>
         <p>Acıktıran Kodlara Doyuran Lezzetler</p>
 
-        {/* 6 Butonlu Kategori Seçimi */}
+        
         <IconButtonGroup>
           {[
             { name: "Ramen", icon: "1.svg" },
@@ -79,7 +77,7 @@ const Home = () => {
           ))}
         </IconButtonGroup>
 
-        {/* 🍕 3 Büyük Görselli Bölüm */}
+        
         <FoodImageSection>
           {["food-1.png", "food-2.png", "food-3.png"].map((food, index) => (
             <img key={index} src={`images/iteration-2-images/pictures/${food}`} alt={`Food ${index + 1}`} />
@@ -87,7 +85,7 @@ const Home = () => {
         </FoodImageSection>
       </Content>
 
-      {/* ⚫ FOOTER BÖLÜMÜ */}
+      
       <FooterComponent/>
        
     </>

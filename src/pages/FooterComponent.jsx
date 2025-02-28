@@ -12,7 +12,6 @@ import {
   return (
     <Footer>
       <FooterContent>
-        {/* Brand and Contact Information */}
         <FooterSection>
           <h2>Teknolojik Yemekler</h2>
           <ContactInfo>
@@ -26,8 +25,6 @@ import {
             <p>+90 216 123 45 67</p>
           </ContactInfo>
         </FooterSection>
-
-        {/* Menu Section */}
         <FooterSection>
           <h3>Sıccacık Menüler</h3>
           <MenuList>
@@ -53,8 +50,6 @@ import {
           </InstagramGrid>
         </FooterSection>
       </FooterContent>
-
-      {/* Copyright Section */}
       <FooterBottom>
         <p>© 2023 Teknolojik Yemekler</p>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">

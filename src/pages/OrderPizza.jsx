@@ -72,13 +72,13 @@ const OrderPizza = ({ setOrderData }) => {
         const newErrors = validationRules.reduce((errors, rule) => {
             if (rule.condition) {
                 errors[rule.key] = rule.message;
-                hasError = true; // Eğer bir hata varsa, bunu true yap
+                hasError = true; // Eğer bir hata varsa, bunu true yapıyorum
             }
             return errors;
         }, {});
 
         setErrors(newErrors);
-        return !hasError; // Eğer hata varsa false, yoksa true döndür
+        return !hasError; // Eğer hata varsa false, yoksa true döndürüyorum
     };
 
 
@@ -110,9 +110,9 @@ const OrderPizza = ({ setOrderData }) => {
                     alt="Form Banner"
                     style={{
                         width: "600px",
-                        height: "200px", // Resmin görünmesini istediğin yükseklik
-                        objectFit: "cover", // Resmi kırparak uygun hale getirir
-                        objectPosition: "bottom" // Alt kısmı sabit bırakır, üstü keser
+                        height: "200px", 
+                        objectFit: "cover", 
+                        objectPosition: "bottom" 
                     }}
                 />
 
@@ -124,7 +124,7 @@ const OrderPizza = ({ setOrderData }) => {
                     <Form onSubmit={handleSubmit}>
                         <Label>İsim *</Label>
                         <Input type="text" name="name" value={formData.name} onChange={handleChange} />
-                        {errors.name && <ErrorText>{errors.name}</ErrorText>} {/* Yeni Stil */}
+                        {errors.name && <ErrorText>{errors.name}</ErrorText>} 
 
 
                         <Label>Boyut Seç *</Label>
@@ -142,7 +142,7 @@ const OrderPizza = ({ setOrderData }) => {
                                 </RadioLabel>
                             ))}
                         </RadioGroup>
-                        {errors.size && <ErrorText>{errors.size}</ErrorText>} {/* Yeni Stil */}
+                        {errors.size && <ErrorText>{errors.size}</ErrorText>} 
 
                         <Label>Hamur Seç *</Label>
                         <Select name="dough" value={formData.dough} onChange={handleChange}>
@@ -151,8 +151,7 @@ const OrderPizza = ({ setOrderData }) => {
                             <option value="Orta">Orta</option>
                             <option value="Kalın">Kalın</option>
                         </Select>
-                        {errors.dough && <ErrorText>{errors.dough}</ErrorText>} {/* Yeni Stil */}
-
+                        {errors.dough && <ErrorText>{errors.dough}</ErrorText>} 
 
                         <Label>Ek Malzemeler (En az 4, Maks. 10)</Label>
                         <CheckboxGroup>
@@ -170,7 +169,7 @@ const OrderPizza = ({ setOrderData }) => {
                                 </CheckboxLabel>
                             ))}
                         </CheckboxGroup>
-                        {errors.toppings && <ErrorText>{errors.toppings}</ErrorText>} {/* Yeni Stil */}
+                        {errors.toppings && <ErrorText>{errors.toppings}</ErrorText>} 
 
                         <Label>Adet</Label>
                         <QuantityBox>
